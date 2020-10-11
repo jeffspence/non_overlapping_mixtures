@@ -18,16 +18,16 @@ All of the scripts are assumed to be run from the ```code``` directory.
 
 ## ldpred.py
 
-            Simulates data as described in the main text and then
-            computes the correlation and MSE of the point estimates
-            against the truth. The results are saved in data/ldpred/
-            The usage is:
+Simulates data as described in the main text and then
+computes the correlation and MSE of the point estimates
+against the truth. The results are saved in data/ldpred/
+The usage is:
 
-                ```python ldpred.py <sigma_sq_e> <number_of_repetitions>```
+```python ldpred.py <sigma_sq_e> <number_of_repetitions>```
 
-            The outputs are ```data/ldpred/cor_mat_<sigma_sq_e>.txt``` that contain
-            the correlations and ```mse_mat_<sigma_sq_e>.txt``` that contain
-            the MSE for each VI scheme.
+The outputs are ```data/ldpred/cor_mat_<sigma_sq_e>.txt``` that contain
+the correlations and ```mse_mat_<sigma_sq_e>.txt``` that contain
+the MSE for each VI scheme.
 
 
 ## ldpred_plotter.R

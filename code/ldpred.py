@@ -83,6 +83,10 @@ cor_mat = np.zeros((num_reps, 10))
 header = ['beta_hat', 'MLE', 'naive_1.0', 'naive_1e-1', 'naive_1e-2',
           'naive_1e-3', 'naive_1e-4', 'naive_1e-5', 'naive_1e-10', 'sparse']
 
+
+true_betas = np.zeros((num_reps, num_sites))
+ld_mats = np.zeros((num_reps, num_sites, num_sites))
+beta_hats = np.zeros((num_reps, num_sites))
 for rep in range(num_reps):
     print(rep)
     true_beta = np.zeros(num_sites)
@@ -91,16 +95,18 @@ for rep in range(num_reps):
                                           scale=np.sqrt(sigma_sq_1),
                                           size=nonzero.sum())
 
+    true_betas[rep] = true_beta
     ld_matrix = (scipy.stats.wishart.rvs(num_sites, np.eye(num_sites))
                  / num_sites)
 
+    ld_mats[rep] = ld_matrix
     chol = np.linalg.cholesky(ld_matrix)
     inv = np.linalg.inv(ld_matrix)
     noise = chol.dot(np.random.normal(loc=0,
                                       scale=np.sqrt(sigma_sq_e),
                                       size=num_sites))
     beta_hat = ld_matrix.dot(true_beta) + noise
-
+    beta_hats[rep] = beta_hat
     cor_mat[rep, 0] = np.corrcoef(beta_hat, true_beta)[0, 1]
     cor_mat[rep, 1] = np.corrcoef(inv.dot(beta_hat), true_beta)[0, 1]
     mse_mat[rep, 0] = np.mean((beta_hat - true_beta)**2)
@@ -145,3 +151,6 @@ np.savetxt('../data/ldpred/cor_mat_' + str(sigma_sq_e) + '.txt', cor_mat,
            header='\t'.join(header))
 np.savetxt('../data/ldpred/mse_mat_' + str(sigma_sq_e) + '.txt', mse_mat,
            header='\t'.join(header))
+np.save('../data/ldpred/true_betas_' + str(sigma_sq_e) + '.npy', true_betas)
+np.save('../data/ldpred/beta_hats_' + str(sigma_sq_e) + '.npy', beta_hats)
+np.save('../data/ldpred/ld_mats_' + str(sigma_sq_e) + '.npy', ld_mats)
