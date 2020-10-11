@@ -36,10 +36,10 @@ to be used with ```nimble_code.R``` and ```pyro_code_discrete.py```.
 Performs MCMC on the ldpred model data simulated by ```ldpred.py```.
 The usage is:
 
-```Rscript nimble_code.R <1-indexed iteration> <sigma_sq_e>```
+```Rscript nimble_code.R <1-indexed rep> <sigma_sq_e>```
 
 The output is
- ```data/ldpred/nimble_results_<1-indexed iteration>_<sigma_sq_e>.txt```,
+ ```data/ldpred/nimble_results_<1-indexed rep>_<sigma_sq_e>.txt```,
  which contrains the correlation and MSE for this run.  These runs can
 then be combined using ```parse_nimble.py```.
 
@@ -55,12 +55,12 @@ they can be used in ```ldpred_plotter.R```.
 Performs boosting black box VI using ```pyro``` on the ldpred
 model data simulated by ```ldpred.py```. The usage is:
 
-```python pyro_code_discrete.py <1-indexed iteration> <sigma_sq_e>```
+```python pyro_code_discrete.py <1-indexed rep> <sigma_sq_e>```
 
 The output is
-```data/ldpred/pyro_discrete_<sigma_sq_e>_rep_<1-indexed iteration>_cor.txt```
+```data/ldpred/pyro_discrete_<sigma_sq_e>_rep_<1-indexed rep>_cor.txt```
 and
-```data/ldpred/pyro_discrete_<sigma_sq_e>_rep_<1-indexed iteration>_mse.txt```
+```data/ldpred/pyro_discrete_<sigma_sq_e>_rep_<1-indexed rep>_mse.txt```
 containing the correlation of the posterior mean and true betas and MSE
 respectively.
 
