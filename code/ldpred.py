@@ -80,8 +80,8 @@ num_sites = 1000
 
 mse_mat = np.zeros((num_reps, 10))
 cor_mat = np.zeros((num_reps, 10))
-header = ['beta_hat', 'MLE', 'naive_1.0', 'naive_1e-1', 'naive_1e-2',
-          'naive_1e-3', 'naive_1e-4', 'naive_1e-5', 'naive_1e-10', 'sparse']
+header = ['beta_hat', 'MLE', 'naive_1.0', 'naive_1e-2', 'naive_1e-4',
+          'naive_1e-10', 'nothing_1', 'nothing_2', 'nothing_3', 'sparse']
 
 
 true_betas = np.zeros((num_reps, num_sites))
@@ -112,7 +112,7 @@ for rep in range(num_reps):
     mse_mat[rep, 0] = np.mean((beta_hat - true_beta)**2)
     mse_mat[rep, 1] = np.mean((inv.dot(beta_hat) - true_beta)**2)
 
-    for idx, sigma_0 in enumerate([1.0, 1e-1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-10]):
+    for idx, sigma_0 in enumerate([1.0, 1e-2, 1e-4, 1e-10]):
         start_time = time()
         vi_mu = np.zeros_like(beta_hat)
         vi_s = (sigma_sq_1 + sigma_sq_e) * np.ones(num_sites)

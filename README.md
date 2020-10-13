@@ -1,6 +1,6 @@
 This repo contains all of the scripts used in
 "Flexible mean field variational inference
-using mixtures of non-overlapping exponential families."
+using mixtures of non-overlapping exponential families." (url pending)
 
 It also contains plotting scripts, although with different
 seeds, the output of the scripts may be slightly different
@@ -20,7 +20,7 @@ All of the scripts are assumed to be run from the ```code``` directory.
 
 Simulates data as described in the main text and then
 computes the correlation and MSE of the point estimates
-against the truth. The results are saved in data/ldpred/
+against the truth. The results are saved in ```data/ldpred/```
 The usage is:
 
 ```python ldpred.py <sigma_sq_e> <number_of_repetitions>```
@@ -29,6 +29,7 @@ The outputs are ```data/ldpred/cor_mat_<sigma_sq_e>.txt``` that contain
 the correlations and ```mse_mat_<sigma_sq_e>.txt``` that contain
 the MSE for each VI scheme.  Additionally, it saves the raw data
 to be used with ```nimble_code.R``` and ```pyro_code_discrete.py```.
+The plotting scripts assume that ```<number_of_repetitions>``` is 100.
 
 
 ## nimble_code.R
@@ -41,7 +42,8 @@ The usage is:
 The output is
  ```data/ldpred/nimble_results_<1-indexed rep>_<sigma_sq_e>.txt```,
  which contrains the correlation and MSE for this run.  These runs can
-then be combined using ```parse_nimble.py```.
+then be combined using ```parse_nimble.py```.  The plotting scripts
+assume that the ```<1-indexed rep>```s run from 1-100.
 
 
 ## parse_nimble.py
@@ -62,7 +64,8 @@ The output is
 and
 ```data/ldpred/pyro_discrete_<sigma_sq_e>_rep_<1-indexed rep>_mse.txt```
 containing the correlation of the posterior mean and true betas and MSE
-respectively.
+respectively.  The plotting scripts assume that the ``<1-indexed rep>```s
+run from 1-100.
 
 ## parse_pyro.py
 
@@ -157,7 +160,7 @@ the results will not exactly match those in the paper
 but will be comparable.
 
 
-## figs
+## figs/
 
 All of the raw figures used in the manuscript.
 Note that labels were often added directly to figures
