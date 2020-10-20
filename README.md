@@ -1,6 +1,6 @@
 This repo contains all of the scripts used in
-"Flexible mean field variational inference
-using mixtures of non-overlapping exponential families." (url pending)
+["Flexible mean field variational inference
+using mixtures of non-overlapping exponential families."](https://arxiv.org/abs/2010.06768)
 
 It also contains plotting scripts, although with different
 seeds, the output of the scripts may be slightly different
@@ -166,3 +166,12 @@ All of the raw figures used in the manuscript.
 Note that labels were often added directly to figures
 or figures were combined into multi-panel figures using
 [inkscape](https://inkscape.org).
+
+
+## Real Data Application
+Data downloading and preprocessing were performed essentially exactly
+as described in in the [kallisto](https://www.kallistobus.tools) tutorial implemented
+in [this Google Collab notebook](https://colab.research.google.com/github/pachterlab/kallistobustools/blob/master/notebooks/kb_analysis_0_python.ipynb).
+To facilitate reproduction, large portions of this notebook
+are copied into ```code/real_data_PBMC_dataset.ipynb```.  Running the notebook should
+reproduce the figures in the paper.
