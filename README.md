@@ -1,6 +1,6 @@
 This repo contains all of the scripts used in
 ["Flexible mean field variational inference
-using mixtures of non-overlapping exponential families."](https://arxiv.org/abs/2010.06768)
+using mixtures of non-overlapping exponential families."](https://proceedings.neurips.cc/paper/2020/hash/e3a54649aeec04cf1c13907bc6c5c8aa-Abstract.html)
 
 It also contains plotting scripts, although with different
 seeds, the output of the scripts may be slightly different
